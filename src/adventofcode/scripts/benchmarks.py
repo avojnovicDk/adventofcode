@@ -8,7 +8,7 @@ from adventofcode import config
 from adventofcode.config import ROOT_DIR
 from adventofcode.scripts.generate_readme import _replace_between_tags
 from adventofcode.util.console import console
-from adventofcode.util.input_helpers import get_input_for_day
+from adventofcode.util.input_helpers import get_input_file_path
 from adventofcode.util.module_helpers import (
     clean_day,
     clean_year,
@@ -205,18 +205,18 @@ def _run_day(module: Any, year: int, day: int, benchmarks: Benchmarks):
     """
     Runs all solutions in the given day
     """
-    data = get_input_for_day(year, day)
-    console.log(f"retrieved input for {year} {day:02}")
+    input_file_path = get_input_file_path(year, day)
+    console.log(f"retrieved input file path for {year} {day:02}")
 
     try:
-        benchmarks[year][day]["part one"] = module.part_one(data)
+        benchmarks[year][day]["part one"] = module.part_one(input_file_path)
     except AttributeError:
         pass
 
     console.log(f"ran {year} {day:02} part one")
 
     try:
-        benchmarks[year][day]["part two"] = module.part_two(data)
+        benchmarks[year][day]["part two"] = module.part_two(input_file_path)
     except AttributeError:
         pass
 
@@ -225,7 +225,7 @@ def _run_day(module: Any, year: int, day: int, benchmarks: Benchmarks):
     for solution in _get_extra_solutions_in_module(module):
         readable_name = solution.replace("_", " ")
         try:
-            benchmarks[year][day][readable_name] = getattr(module, solution)(data)
+            benchmarks[year][day][readable_name] = getattr(module, solution)(input_file_path)
         except AttributeError:
             pass
 

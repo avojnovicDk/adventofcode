@@ -1,5 +1,6 @@
 import os
 import warnings
+from typing import Generator
 
 from adventofcode.config import ROOT_DIR
 
@@ -24,6 +25,11 @@ def get_input_for_day_as_str(year: int, day: int) -> str:
         stacklevel=2,
     )
     return _read_file(get_input_file_path(year, day))
+
+
+def yield_lines(file_path: str) -> Generator[str, None, None]:
+    with open(file_path, 'r') as f:
+        yield from f
 
 
 def _read_lines(file_name) -> list[str]:

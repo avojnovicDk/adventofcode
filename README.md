@@ -51,8 +51,8 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 
 |  day  | part  | duration |
 | :---: | :---: | -------: |
-| 01 | part one | 0.00 ms |
-| 01 | part two | 0.00 ms |
+| 01 | part one | 0.52 ms |
+| 01 | part two | 0.56 ms |
 
 </p>
 </details>
