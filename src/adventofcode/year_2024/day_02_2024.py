@@ -6,21 +6,14 @@ from adventofcode.util.input_helpers import get_input_file_path, yield_lines
 
 
 class SafetyChecker:
-    is_increasing: Optional[bool] = None
     index: int = 0
+    valid_diffs: tuple[int] = None
 
     def __call__(self, prev_el: int, el: int):
-        if prev_el == el:
-            raise Exception()
-
-        if self.is_increasing is None:
-            self.is_increasing = el > prev_el
-        elif self.is_increasing and el < prev_el:
-            raise Exception()
-        elif not self.is_increasing and el > prev_el:
-            raise Exception()
+        if self.valid_diffs is None:
+           self.valid_diffs = (1, 2, 3) if el > prev_el else (-1, -2, -3)
         
-        if abs(el - prev_el) > 3:
+        if el - prev_el not in self.valid_diffs:
             raise Exception()
         
         self.index += 1
