@@ -1,7 +1,7 @@
 from adventofcode import config
 from adventofcode.registry import autodetect, registry
 from adventofcode.registry.util import get_info_from_registry_key
-from adventofcode.util.input_helpers import get_input_for_day
+from adventofcode.util.input_helpers import get_input_file_path
 
 
 def run_all() -> None:
@@ -16,7 +16,7 @@ def run_all() -> None:
 
     for key, solution in registry.items():
         year, day, part, version = get_info_from_registry_key(key)
-        data = get_input_for_day(year, day)
+        data = get_input_file_path(year, day)
 
         solution(data)
 
@@ -27,7 +27,7 @@ def _run_day(module, year: int, day: int):
     """
     Runs all solutions in the given day
     """
-    data = get_input_for_day(year, day)
+    data = get_input_file_path(year, day)
     try:
         module.part_one(data)
     except AttributeError:
