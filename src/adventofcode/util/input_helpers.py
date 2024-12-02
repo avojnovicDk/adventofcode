@@ -4,12 +4,18 @@ import warnings
 from adventofcode.config import ROOT_DIR
 
 
+def get_input_file_path(year: int, day: int) -> str:
+    """
+    Get the input file path for the year/day.
+    """
+    return os.path.join(ROOT_DIR, "inputs", str(year), f"day_{day:02}.txt")
+
+
 def get_input_for_day(year: int, day: int) -> list[str]:
     """
     Get the input for the year/day as list of strings
     """
-    input_file = os.path.join(ROOT_DIR, "inputs", str(year), f"day_{day:02}.txt")
-    return _get_input(input_file)
+    return _get_input(get_input_file_path(year, day))
 
 
 def get_input_for_day_as_str(year: int, day: int) -> str:
@@ -17,8 +23,7 @@ def get_input_for_day_as_str(year: int, day: int) -> str:
         "get_input_for_day_as_str does not work with the registry, better to not use it",
         stacklevel=2,
     )
-    input_file = os.path.join(ROOT_DIR, "inputs", str(year), f"day_{day:02}.txt")
-    return _read_file(input_file)
+    return _read_file(get_input_file_path(year, day))
 
 
 def _read_lines(file_name) -> list[str]:
