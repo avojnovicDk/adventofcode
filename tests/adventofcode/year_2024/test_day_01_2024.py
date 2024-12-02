@@ -6,8 +6,8 @@ DIR_NAME, _ = os.path.split(os.path.abspath(__file__))
 
 
 def test_part_one():
-    assert part_one(f"{DIR_NAME}/input.txt") == 11
+    assert part_one(f"{DIR_NAME}/inputs/day_01.txt") == 11
 
 
 def test_part_two():
-    assert part_two(f"{DIR_NAME}/input.txt") == 'x'
+    assert part_two(f"{DIR_NAME}/inputs/day_01.txt") == 31

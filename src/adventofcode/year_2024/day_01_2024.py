@@ -19,17 +19,13 @@ def _split_lines_into_cols_of_ints(lines: Iterable[str]):
 @register_solution(2024, 1, 1)
 def part_one(input_file_path: str) -> int:
     col1, col2 = _split_lines_into_cols_of_ints(yield_lines(input_file_path))
+
     return sum(abs(b - a) for a, b in zip(sorted(col1), sorted(col2)))
 
 
 @register_solution(2024, 1, 2)
 def part_two(input_file_path: str) -> int:
-    col1, col2 = list(), list()
-    for line in yield_lines(input_file_path):
-        v1, v2 = line.split()
-        col1.append(int(v1))
-        col2.append(int(v2))
-    
+    col1, col2 = _split_lines_into_cols_of_ints(yield_lines(input_file_path))
     col1, col2 = Counter(col1), Counter(col2)
     
     return sum(n * count * col2[n] for n, count in col1.items())
