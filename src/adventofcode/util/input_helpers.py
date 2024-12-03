@@ -24,7 +24,7 @@ def get_input_for_day_as_str(year: int, day: int) -> str:
         "get_input_for_day_as_str does not work with the registry, better to not use it",
         stacklevel=2,
     )
-    return _read_file(get_input_file_path(year, day))
+    return read_file(get_input_file_path(year, day))
 
 
 def yield_lines(file_path: str) -> Generator[str, None, None]:
@@ -50,12 +50,9 @@ def _get_input(file_name) -> list[str]:
     return [line.rstrip() for line in lines]
 
 
-def _read_file(file_name) -> str:
+def read_file(file_name) -> str:
     """
     Reads file to string
     """
     with open(file_name) as file:
-        content = file.read()
-
-    content = content.rstrip("\n")
-    return content
+        return file.read().rstrip("\n")

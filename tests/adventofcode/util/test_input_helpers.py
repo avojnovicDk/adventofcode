@@ -4,7 +4,7 @@ import pytest_mock
 from adventofcode.util import input_helpers
 from adventofcode.util.input_helpers import (
     _get_input,
-    _read_file,
+    read_file,
     get_input_for_day,
     get_input_for_day_as_str,
 )
@@ -25,7 +25,7 @@ def test_get_input_for_day(mocker: pytest_mock.MockerFixture):
 
 
 def test_get_input_for_day_as_str(mocker: pytest_mock.MockerFixture):
-    mock_read_file = mocker.patch("adventofcode.util.input_helpers._read_file")
+    mock_read_file = mocker.patch("adventofcode.util.input_helpers.read_file")
     mock_read_file.return_value = "c0ffee\ncafe"
 
     original_root_dir = input_helpers.ROOT_DIR
@@ -52,5 +52,5 @@ def test__get_input(mocker: pytest_mock.MockerFixture):
 
 def test__read_file(mocker: pytest_mock.MockerFixture):
     mocker.patch("builtins.open", mocker.mock_open(read_data="test input"))
-    content = _read_file("testfile.txt")
+    content = read_file("testfile.txt")
     assert "test input" == content
