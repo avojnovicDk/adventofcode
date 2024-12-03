@@ -7,7 +7,7 @@ from adventofcode.util.input_helpers import get_input_file_path, yield_lines
 
 class SafetyChecker:
     index: int = 0
-    valid_diffs: tuple[int] = None
+    valid_diffs: Optional[tuple[int]] = None
 
     def __call__(self, prev_el: int, el: int):
         if self.valid_diffs is None:
