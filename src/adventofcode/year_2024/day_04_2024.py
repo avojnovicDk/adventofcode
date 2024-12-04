@@ -3,13 +3,13 @@ from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_file_path, get_input
 
 
-def _get_char_in_dir(lines: list[str], x: int, y: int, dir_x: int, dir_y: int):
+def _get_char_in_dir(lines: list[str], x: int, y: int, dir_x: int, dir_y: int) -> str:
         x, y = x + dir_x, y + dir_y
         if 0 <= x < len(lines) and 0 <= y < len(lines[0]):
             return lines[x][y]
 
 
-def _count_from_starting(lines: list[str], starting_char: str, count: Callable):
+def _count_from_starting(lines: list[str], starting_char: str, count: Callable) -> int:
     return sum(
         count(lines, x, y)
         for x in range(len(lines))
@@ -19,7 +19,7 @@ def _count_from_starting(lines: list[str], starting_char: str, count: Callable):
 
 
 @register_solution(2024, 4, 1)
-def part_one(input_file_path: str):
+def part_one(input_file_path: str) -> int:
     frame = (
         (-1, -1), (-1, 0), (-1, 1),
         ( 0, -1),          ( 0, 1),
@@ -40,7 +40,7 @@ def part_one(input_file_path: str):
 
 
 @register_solution(2024, 4, 2)
-def part_two(input_file_path: str):
+def part_two(input_file_path: str) -> int:
     crosses = (
         ((-1, -1), (1,  1),),
         ((-1,  1), (1, -1),),
