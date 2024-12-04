@@ -66,8 +66,8 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 
 |  day  | part  | duration |
 | :---: | :---: | -------: |
-| 01 | part one | 10.17 ms |
-| 01 | part two | 4.80 ms |
+| 01 | part one | 9.53 ms |
+| 01 | part two | 4.45 ms |
 
 </p>
 </details>
@@ -78,14 +78,14 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 
 |  day  | part  | duration |
 | :---: | :---: | -------: |
-| 01 | part one | 0.42 ms |
-| 01 | part two | 0.43 ms |
-| 02 | part one | 1.19 ms |
-| 02 | part two | 2.45 ms |
-| 03 | part one | 0.38 ms |
-| 03 | part two | 0.22 ms |
-| 04 | part one | 6.33 ms |
-| 04 | part two | 4.93 ms |
+| 01 | part one | 0.50 ms |
+| 01 | part two | 0.46 ms |
+| 02 | part one | 1.33 ms |
+| 02 | part two | 2.38 ms |
+| 03 | part one | 0.40 ms |
+| 03 | part two | 0.25 ms |
+| 04 | part one | 5.46 ms |
+| 04 | part two | 4.83 ms |
 
 </p>
 </details>

@@ -1,15 +1,10 @@
-from typing import Callable, NamedTuple
+from typing import Callable
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_file_path, get_input
 
 
-class Direction(NamedTuple):
-    x: int
-    y: int
-
-
-def _get_char_in_direction(lines: list[str], x: int, y: int, direction: Direction):
-        x, y = x + direction.x, y + direction.y
+def _get_char_in_dir(lines: list[str], x: int, y: int, dir_x: int, dir_y: int):
+        x, y = x + dir_x, y + dir_y
         if 0 <= x < len(lines) and 0 <= y < len(lines[0]):
             return lines[x][y]
 
@@ -30,22 +25,19 @@ class XmasCounter:
 
 @register_solution(2024, 4, 1)
 def part_one(input_file_path: str):
-    frame = tuple(
-        Direction(*d) for d in
-        (
-            (-1, -1), (-1, 0), (-1, 1),
-            ( 0, -1),          ( 0, 1),
-            ( 1, -1), ( 1, 0), ( 1, 1),
-        )
+    frame = (
+        (-1, -1), (-1, 0), (-1, 1),
+        ( 0, -1),          ( 0, 1),
+        ( 1, -1), ( 1, 0), ( 1, 1),
     )
 
     count = lambda lines, x, y: sum(
         1
-        for direction in frame
+        for dir_x, dir_y in frame
         if (
-            _get_char_in_direction(lines, x, y, direction) == "M"
-            and _get_char_in_direction(lines, x + direction.x, y + direction.y, direction) == "A"
-            and _get_char_in_direction(lines, x + 2 * direction.x, y + 2 * direction.y, direction) == "S"
+            _get_char_in_dir(lines, x, y, dir_x, dir_y) == "M"
+            and _get_char_in_dir(lines, x + dir_x, y + dir_y, dir_x, dir_y) == "A"
+            and _get_char_in_dir(lines, x + 2 * dir_x, y + 2 * dir_y, dir_x, dir_y) == "S"
         )
     )
     
@@ -55,12 +47,12 @@ def part_one(input_file_path: str):
 @register_solution(2024, 4, 2)
 def part_two(input_file_path: str):
     crosses = (
-        (Direction(x=-1, y=-1), Direction(x=1, y= 1)),
-        (Direction(x=-1, y= 1), Direction(x=1, y=-1))
+        ((-1, -1), (1,  1),),
+        ((-1,  1), (1, -1),),
     )
 
     count = lambda lines, x, y: 1 if all(
-        set(_get_char_in_direction(lines, x, y, direction) for direction in cross) == {"M", "S"}
+        set(_get_char_in_dir(lines, x, y, dir_x, dir_y) for dir_x, dir_y in cross) == {"M", "S"}
         for cross in crosses
     ) else 0
     
