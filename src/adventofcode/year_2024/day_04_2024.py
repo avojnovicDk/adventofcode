@@ -1,10 +1,11 @@
 from typing import Callable
+
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_file_path, get_input
 
 
-def _get_char_in_dir(lines: list[str], x: int, y: int, dir_x: int, dir_y: int) -> str:
-        x, y = x + dir_x, y + dir_y
+def _get_char_in_dir(lines: list[str], x: int, y: int, dir_x: int, dir_y: int, no_of_steps: int = 1) -> str:
+        x, y = x + dir_x * no_of_steps, y + dir_y * no_of_steps
         if 0 <= x < len(lines) and 0 <= y < len(lines[0]):
             return lines[x][y]
 
@@ -29,10 +30,9 @@ def part_one(input_file_path: str) -> int:
     count = lambda lines, x, y: sum(
         1
         for dir_x, dir_y in frame
-        if (
-            _get_char_in_dir(lines, x, y, dir_x, dir_y) == "M"
-            and _get_char_in_dir(lines, x + dir_x, y + dir_y, dir_x, dir_y) == "A"
-            and _get_char_in_dir(lines, x + 2 * dir_x, y + 2 * dir_y, dir_x, dir_y) == "S"
+        if (_get_char_in_dir(lines, x, y, dir_x, dir_y, 3) == "S"
+            and _get_char_in_dir(lines, x, y, dir_x, dir_y, 2) == "A"
+            and _get_char_in_dir(lines, x, y, dir_x, dir_y) == "M"
         )
     )
     
