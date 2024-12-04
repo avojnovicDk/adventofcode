@@ -9,18 +9,13 @@ def _get_char_in_dir(lines: list[str], x: int, y: int, dir_x: int, dir_y: int):
             return lines[x][y]
 
 
-class XmasCounter:
-    def __init__(self, starting_char: str, count: Callable):
-        self.starting_char = starting_char
-        self.count = count
-
-    def __call__(self, lines: list[str]):
-        return sum(
-            self.count(lines, x, y)
-            for x in range(len(lines))
-            for y in range(len(lines[0]))
-            if lines[x][y] == self.starting_char
-        )
+def _count_from_starting(lines: list[str], starting_char: str, count: Callable):
+    return sum(
+        count(lines, x, y)
+        for x in range(len(lines))
+        for y in range(len(lines[0]))
+        if lines[x][y] == starting_char
+    )
 
 
 @register_solution(2024, 4, 1)
@@ -41,7 +36,7 @@ def part_one(input_file_path: str):
         )
     )
     
-    return XmasCounter("X", count)(get_input(input_file_path))
+    return _count_from_starting(get_input(input_file_path), "X", count)
 
 
 @register_solution(2024, 4, 2)
@@ -56,7 +51,7 @@ def part_two(input_file_path: str):
         for cross in crosses
     ) else 0
     
-    return XmasCounter("A", count)(get_input(input_file_path))
+    return _count_from_starting(get_input(input_file_path), "A", count)
 
 
 if __name__ == '__main__':
