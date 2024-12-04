@@ -3,7 +3,7 @@ import pytest_mock
 
 from adventofcode.util import input_helpers
 from adventofcode.util.input_helpers import (
-    _get_input,
+    get_input,
     read_file,
     get_input_for_day,
     get_input_for_day_as_str,
@@ -11,7 +11,7 @@ from adventofcode.util.input_helpers import (
 
 
 def test_get_input_for_day(mocker: pytest_mock.MockerFixture):
-    mock_get_input = mocker.patch("adventofcode.util.input_helpers._get_input")
+    mock_get_input = mocker.patch("adventofcode.util.input_helpers.get_input")
     mock_get_input.return_value = ["c0ffee", "cafe"]
 
     original_root_dir = input_helpers.ROOT_DIR
@@ -46,7 +46,7 @@ def test__read_lines():
 def test__get_input(mocker: pytest_mock.MockerFixture):
     mock_read_lines = mocker.patch("adventofcode.util.input_helpers._read_lines")
     mock_read_lines.return_value = ["c0ffee\n", "cafe\n"]
-    data = _get_input("testfile.text")
+    data = get_input("testfile.text")
     assert ["c0ffee", "cafe"] == data
 
 

@@ -16,7 +16,7 @@ def get_input_for_day(year: int, day: int) -> list[str]:
     """
     Get the input for the year/day as list of strings
     """
-    return _get_input(get_input_file_path(year, day))
+    return get_input(get_input_file_path(year, day))
 
 
 def get_input_for_day_as_str(year: int, day: int) -> str:
@@ -42,7 +42,7 @@ def _read_lines(file_name) -> list[str]:
     return lines
 
 
-def _get_input(file_name) -> list[str]:
+def get_input(file_name) -> list[str]:
     """
     Strips new lines from input file and returns it as list of string
     """
