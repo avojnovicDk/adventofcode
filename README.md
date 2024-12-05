@@ -1,5 +1,5 @@
 # Advent of Code ⭐️
-[![Stars collected](https://shields.io/static/v1?label=stars%20collected&message=14&color=yellow)]()
+[![Stars collected](https://shields.io/static/v1?label=stars%20collected&message=16&color=yellow)]()
 [![codecov](https://codecov.io/gh/marcelblijleven/adventofcode/branch/master/graph/badge.svg?token=jZ2TgfyltM)](https://codecov.io/gh/marcelblijleven/adventofcode)
 [![tests](https://github.com/marcelblijleven/adventofcode/actions/workflows/tests.yaml/badge.svg)](https://github.com/marcelblijleven/adventofcode)
 [![version](https://img.shields.io/github/v/release/marcelblijleven/adventofcode.svg)](https://github.com/marcelblijleven/adventofcode/releases)
@@ -37,7 +37,7 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 | :---: | :------: | :------: |
 | 01 | ⭐️ | ⭐️ |
 | 02 | ⭐️ | ⭐️ |
-| 03 | - | - |
+| 03 | ⭐️ | ⭐️ |
 
 </p>
 </details>
@@ -68,10 +68,12 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 
 |  day  | part  | duration |
 | :---: | :---: | -------: |
-| 01 | part one | 9.72 ms |
-| 01 | part two | 4.66 ms |
-| 02 | part one | 0.25 ms |
-| 02 | part two | 0.35 ms |
+| 01 | part one | 9.28 ms |
+| 01 | part two | 4.43 ms |
+| 02 | part one | 0.24 ms |
+| 02 | part two | 0.32 ms |
+| 03 | part one | 4.60 ms |
+| 03 | part two | 2.78 ms |
 
 </p>
 </details>
@@ -82,16 +84,16 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 
 |  day  | part  | duration |
 | :---: | :---: | -------: |
-| 01 | part one | 0.56 ms |
-| 01 | part two | 0.53 ms |
-| 02 | part one | 1.08 ms |
-| 02 | part two | 2.18 ms |
-| 03 | part one | 0.57 ms |
-| 03 | part two | 0.22 ms |
-| 04 | part one | 5.02 ms |
-| 04 | part two | 5.13 ms |
-| 05 | part one | 0.81 ms |
-| 05 | part two | 10.64 ms |
+| 01 | part one | 0.40 ms |
+| 01 | part two | 0.52 ms |
+| 02 | part one | 1.14 ms |
+| 02 | part two | 2.37 ms |
+| 03 | part one | 0.44 ms |
+| 03 | part two | 0.23 ms |
+| 04 | part one | 10.31 ms |
+| 04 | part two | 7.41 ms |
+| 05 | part one | 0.75 ms |
+| 05 | part two | 10.43 ms |
 
 </p>
 </details>
