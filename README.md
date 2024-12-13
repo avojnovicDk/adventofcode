@@ -1,5 +1,5 @@
 # Advent of Code ⭐️
-[![Stars collected](https://shields.io/static/v1?label=stars%20collected&message=29&color=yellow)]()
+[![Stars collected](https://shields.io/static/v1?label=stars%20collected&message=31&color=yellow)]()
 [![codecov](https://codecov.io/gh/marcelblijleven/adventofcode/branch/master/graph/badge.svg?token=jZ2TgfyltM)](https://codecov.io/gh/marcelblijleven/adventofcode)
 [![tests](https://github.com/marcelblijleven/adventofcode/actions/workflows/tests.yaml/badge.svg)](https://github.com/marcelblijleven/adventofcode)
 [![version](https://img.shields.io/github/v/release/marcelblijleven/adventofcode.svg)](https://github.com/marcelblijleven/adventofcode/releases)
@@ -62,6 +62,7 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 | 11 | ⭐️ | ⭐️ |
 | 122024 | - | - |
 | 12 | ⭐️ | - |
+| 13 | ⭐️ | ⭐️ |
 
 </p>
 </details>
@@ -77,12 +78,12 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 
 |  day  | part  | duration |
 | :---: | :---: | -------: |
-| 01 | part one | 10.27 ms |
-| 01 | part two | 4.74 ms |
-| 02 | part one | 0.57 ms |
-| 02 | part two | 0.40 ms |
-| 03 | part one | 5.05 ms |
-| 03 | part two | 2.87 ms |
+| 01 | part one | 15.80 ms |
+| 01 | part two | 4.37 ms |
+| 02 | part one | 4.44 ms |
+| 02 | part two | 0.43 ms |
+| 03 | part one | 10.11 ms |
+| 03 | part two | 2.71 ms |
 
 </p>
 </details>
@@ -93,29 +94,31 @@ Collection of my Advent of Code solutions in an overkill project setup 👻🎄.
 
 |  day  | part  | duration |
 | :---: | :---: | -------: |
-| 01 | part one | 0.66 ms |
-| 01 | part two | 0.53 ms |
-| 02 | part one | 5.23 ms |
-| 02 | part two | 3.16 ms |
-| 03 | part one | 0.68 ms |
+| 01 | part one | 6.06 ms |
+| 01 | part two | 0.45 ms |
+| 02 | part one | 5.92 ms |
+| 02 | part two | 2.37 ms |
+| 03 | part one | 6.35 ms |
 | 03 | part two | 0.25 ms |
-| 04 | part one | 13.59 ms |
-| 04 | part two | 10.62 ms |
-| 05 | part one | 1.01 ms |
-| 05 | part two | 12.74 ms |
-| 06 | part one | 3.40 ms |
-| 06 | part two | 9275.07 ms |
-| 07 | part one | 3167.29 ms |
-| 07 | part two | 244818.31 ms |
-| 08 | part one | 0.23 ms |
-| 08 | part two | 0.36 ms |
-| 09 | part one | 16.46 ms |
-| 09 | part two | 2358.12 ms |
-| 10 | part one | 2.53 ms |
-| 10 | part two | 2.51 ms |
-| 11 | part one | 2.57 ms |
-| 11 | part two | 113.40 ms |
-| 12 | part one | 23.78 ms |
+| 04 | part one | 18.87 ms |
+| 04 | part two | 7.40 ms |
+| 05 | part one | 6.10 ms |
+| 05 | part two | 10.76 ms |
+| 06 | part one | 8.55 ms |
+| 06 | part two | 8901.29 ms |
+| 07 | part one | 3051.55 ms |
+| 07 | part two | 241672.10 ms |
+| 08 | part one | 8.24 ms |
+| 08 | part two | 0.27 ms |
+| 09 | part one | 28.33 ms |
+| 09 | part two | 2372.35 ms |
+| 10 | part one | 15.20 ms |
+| 10 | part two | 2.52 ms |
+| 11 | part one | 6.58 ms |
+| 11 | part two | 114.54 ms |
+| 12 | part one | 31.46 ms |
+| 13 | part one | 0.64 ms |
+| 13 | part two | 0.62 ms |
 
 </p>
 </details>

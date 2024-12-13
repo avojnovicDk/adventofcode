@@ -1,5 +1,5 @@
 # 2024
-Solutions for 13 days in 2024 with a total of 26 stars collected
+Solutions for 14 days in 2024 with a total of 28 stars collected
 
 | day   | part one | part two |
 | :---: | :------: | :------: |
@@ -16,3 +16,4 @@ Solutions for 13 days in 2024 with a total of 26 stars collected
 | 11 | ⭐️ | ⭐️ |
 | 122024 | - | - |
 | 12 | ⭐️ | - |
+| 13 | ⭐️ | ⭐️ |
