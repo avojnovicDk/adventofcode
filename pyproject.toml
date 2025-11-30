@@ -22,8 +22,7 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: PyPy",
 ]
 dependencies = [
-    "rich>=10",
-
+    "rich==10.14.0",
 ]
 
 [project.urls]
@@ -194,3 +193,19 @@ module = [
 ]
 disable_error_code = ["name-defined"]
 ignore_missing_imports = true
+
+[dependency-groups]
+dev = [
+    "black==22.10.0",
+    "codecov==2.1.13",
+    "flake8==6.0.0",
+    "httpx==0.23.1",
+    "isort==5.10.1",
+    "mypy==0.982",
+    "mypy-extensions==0.4.3",
+    "pytest==7.2.0",
+    "pytest-cov==4.0.0",
+    "pytest-mock==3.10.0",
+    "rich==10.14.0",
+    "types-requests==2.26.0",
+]
