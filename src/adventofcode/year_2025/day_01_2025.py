@@ -13,7 +13,8 @@ def part_one(input_file_path: str):
     return sum((pos := pos + change) % 100 == 0 for change in changes)
 
 
-def _yield_clicks(pos, changes):
+def _yield_clicks(changes):
+    pos = 50
     for change in changes:
         if (pos := pos + change) <= 0 and pos != change:
             yield 1
@@ -24,7 +25,7 @@ def _yield_clicks(pos, changes):
 
 @register_solution(2025, 1, 2)
 def part_two(input_file_path: str):
-    return sum(_yield_clicks(50, _yield_changes(input_file_path)))
+    return sum(_yield_clicks(_yield_changes(input_file_path)))
 
 
 if __name__ == '__main__':
