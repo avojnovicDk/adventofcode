@@ -15,15 +15,12 @@ def part_two(input_file_path: str):
     pos, counter = 50, 0
     for line in yield_lines(input_file_path):
         change = int(line.strip().replace("L", "-").replace("R", ""))
-        new_pos = pos + change
-        if new_pos <= 0 and pos > 0:
+        pos += change
+        if pos <= 0 and pos != change:
             counter += 1
-        q, reminder = divmod(abs(new_pos), 100)
-        new_pos = 100 - reminder if new_pos < 0 else reminder
-        if new_pos == 100:
-            new_pos = 0
-        counter += q
-        pos = new_pos
+        clicks, abs_pos = divmod(abs(pos), 100)
+        pos = 100 - abs_pos if pos * abs_pos < 0 else abs_pos
+        counter += clicks
 
     return counter
 
