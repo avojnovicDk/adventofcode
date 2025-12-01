@@ -17,11 +17,10 @@ def part_one(input_file_path: str):
 def part_two(input_file_path: str):
     pos, counter, changes = 50, 0, _yield_changes(input_file_path)
     for change in changes:
-        if (pos := pos + change) <= 0 and pos != change:
-            counter += 1
+        counter += (pos := pos + change) <= 0 and pos != change
         clicks, abs_pos = divmod(abs(pos), 100)
-        pos = 100 - abs_pos if pos * abs_pos < 0 else abs_pos
         counter += clicks
+        pos = 100 - abs_pos if pos * abs_pos < 0 else abs_pos
     return counter
 
 
