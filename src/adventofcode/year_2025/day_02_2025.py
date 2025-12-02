@@ -8,17 +8,15 @@ def _yield_invalid_ids(range, are_reps_limited):
     start, end = map(int, range.split("-"))
     is_possible_seq = lambda seq: int(seq + seq) <= end
     for seq in takewhile(is_possible_seq, map(str, count(1))):
-        no_of_reps = 2
-        candidate = int(seq * no_of_reps)
-        if are_reps_limited and candidate < start:
+        candidate = seq * 2
+        if are_reps_limited and int(candidate) < start:
             continue
 
-        while candidate < start:
-            no_of_reps += 1
-            candidate = int(seq * no_of_reps)
+        while int(candidate) < start:
+            candidate += seq
 
-        if candidate <= end:
-            yield candidate
+        if int(candidate) <= end:
+            yield int(candidate)
 
 
 @register_solution(2025, 2, 1)
