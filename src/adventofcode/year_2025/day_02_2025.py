@@ -4,10 +4,10 @@ from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_file_path, read_file
 
 
-def _yield_invalid_ids(range, repeater):
+def _yield_invalid_ids(range, invalid_ids_gen):
     start, end = map(int, range.split("-"))
     for seq in takewhile(lambda seq: int(seq + seq) <= end, map(str, count(1))):
-         for invalid_id in repeater(seq):
+         for invalid_id in invalid_ids_gen(seq):
             if invalid_id >= start:
                 if invalid_id <= end:
                     yield invalid_id
