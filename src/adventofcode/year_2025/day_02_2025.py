@@ -1,53 +1,42 @@
-import math
+from itertools import count, takewhile
 
 from adventofcode.registry.decorators import register_solution
 from adventofcode.util.input_helpers import get_input_file_path, read_file
 
 
-def _yield_candidates(range: str):
-    start, end = range.split("-")
-    half_start = int(start[:math.floor(len(start)/2)] or 0)
-    candidate = int(f"{half_start}{half_start}")
-    while candidate < int(start):
-        half_start += 1
-        candidate = int(f"{half_start}{half_start}")
+def _yield_invalid_ids(range, are_reps_limited):
+    start, end = map(int, range.split("-"))
+    is_possible_seq = lambda seq: int(seq + seq) <= end
+    for seq in takewhile(is_possible_seq, map(str, count(1))):
+        no_of_reps = 2
+        candidate = int(seq * no_of_reps)
+        if are_reps_limited and candidate < start:
+            continue
 
-    while candidate <= int(end):
-        yield candidate
-        half_start += 1
-        candidate = int(f"{half_start}{half_start}")
+        while candidate < start:
+            no_of_reps += 1
+            candidate = int(seq * no_of_reps)
+
+        if candidate <= end:
+            yield candidate
 
 
 @register_solution(2025, 2, 1)
 def part_one(input_file_path: str):
     return sum(
-        candidate
+        invalid_id
         for range in read_file(input_file_path).split(",")
-        for candidate in _yield_candidates(range)
+        for invalid_id in _yield_invalid_ids(range, True)
     )
-
-
-def _yield_candidates_2(range: str):
-    start, end = range.split("-")
-    seq = 1
-    while int(f"{seq}{seq}") <= int(end):
-        min_rep = max(math.floor(len(start)/len(str(seq))), 2)
-        start_seq = str(seq) * min_rep
-        if int(start_seq) < int(start):
-            start_seq += str(seq)
-        while int(start_seq) <= int(end):
-            yield start_seq
-            start_seq += str(seq)
-        seq += 1
 
 
 @register_solution(2025, 2, 2)
 def part_two(input_file_path: str):
-    result = 0
-    for range in read_file(input_file_path).split(","):
-        candidates = set(_yield_candidates_2(range))
-        result += sum(map(int, candidates))
-    return result
+    return sum(
+        invalid_id
+        for range in read_file(input_file_path).split(",")
+        for invalid_id in set(_yield_invalid_ids(range, False))
+    )
 
 
 if __name__ == '__main__':
