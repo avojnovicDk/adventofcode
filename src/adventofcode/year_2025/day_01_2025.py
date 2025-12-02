@@ -10,7 +10,7 @@ def _yield_changes(input_file_path: str):
 @register_solution(2025, 1, 1)
 def part_one(input_file_path: str):
     pos, changes = 50, _yield_changes(input_file_path)
-    return sum((pos := pos + change) % 100 == 0 for change in changes)
+    return sum(not (pos := pos + change) % 100 for change in changes)
 
 
 def _yield_clicks(changes):
