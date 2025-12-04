@@ -51,3 +51,4 @@ if __name__ == '__main__':
     input_file_path = get_input_file_path(2025, 3)
     part_one(input_file_path)
     part_two(input_file_path)
+

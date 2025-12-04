@@ -32,6 +32,12 @@ def yield_lines(file_path: str) -> Generator[str, None, None]:
         yield from f
 
 
+def yield_points(file_path: str) -> Generator[str, None, None]:
+    for x, line in enumerate(yield_lines(file_path)):
+        for y, c in enumerate(line.strip()):
+            yield (x + 1j * y), c
+
+
 def _read_lines(file_name) -> list[str]:
     """
     Reads file to list of string
