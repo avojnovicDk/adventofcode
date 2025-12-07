@@ -1,0 +1,92 @@
+from adventofcode.registry.decorators import register_solution
+from adventofcode.util.exceptions import SolutionNotFoundError
+from adventofcode.util.input_helpers import get_input_file_path
+from adventofcode.util.input_helpers import yield_lines
+
+
+
+@register_solution(2025, 7, 1)
+def part_one(input_file_path: str):
+    splitters = set()
+    row, col = 0, 0
+    start = (0,0) # (row, col)
+    for line in yield_lines(input_file_path):
+        if (col_ := line.find("S")) != -1:
+            start = (row, col_)
+        else:
+            for col_, char in enumerate(line):
+                if char == "^":
+                    splitters.add((row, col_))
+        row += 1
+    col = len(line.strip())
+
+    visited = set()
+    def calc_splitters_hit(start: tuple):
+        if start in visited:
+            return 0
+        pos = start
+        visited.add(pos)
+        while True:
+            new_pos = (pos[0]+1, pos[1])
+            if new_pos in visited:
+                return 0
+            if new_pos[0] > row-1 or new_pos[1] < 0 or new_pos[1] > col-1:
+                return 0
+            elif new_pos in splitters:
+                s = 1
+                s += calc_splitters_hit((new_pos[0], new_pos[1]-1))
+                s += calc_splitters_hit((new_pos[0], new_pos[1]+1))
+                return s
+            else:
+                pos = new_pos
+                visited.add(pos)
+
+    return calc_splitters_hit(start)
+
+
+@register_solution(2025, 7, 2)
+def part_two(input_file_path: str):
+    splitters = set()
+    row, col = 0, 0
+    start = (0,0) # (row, col)
+    for line in yield_lines(input_file_path):
+        if (col_ := line.find("S")) != -1:
+            start = (row, col_)
+        else:
+            for col_, char in enumerate(line):
+                if char == "^":
+                    splitters.add((row, col_))
+        row += 1
+    col = len(line.strip())
+
+    visited = {}
+    def calc_splitters_hit(start: tuple):
+        if start in visited:
+            return visited[start]
+        pos = start
+        while True:
+            new_pos = (pos[0]+1, pos[1])
+            if new_pos in visited:
+                return visited[new_pos]
+            if new_pos[0] == row-1:
+                visited[start] = 1
+                return 1
+            if new_pos[0] > row-1 or new_pos[1] < 0 or new_pos[1] > col-1:
+                return 0
+            elif new_pos in splitters:
+                s = 0
+                s += calc_splitters_hit((new_pos[0], new_pos[1]-1))
+                s += calc_splitters_hit((new_pos[0], new_pos[1]+1))
+                visited[start] = s
+                return s
+            else:
+                pos = new_pos
+
+
+    return calc_splitters_hit(start)
+
+
+if __name__ == '__main__':
+    input_file_path = get_input_file_path(2025, 7)
+    part_one(input_file_path)
+    part_two(input_file_path)
