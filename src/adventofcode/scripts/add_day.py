@@ -1,5 +1,7 @@
 import os
 import sys
+import datetime
+import random
 from argparse import ArgumentParser
 
 from httpx import HTTPError
@@ -7,7 +9,7 @@ from httpx import HTTPError
 from adventofcode.config import ROOT_DIR
 from adventofcode.scripts.get_inputs import get_input
 from adventofcode.util.console import console
-from adventofcode.util.input_helpers import get_input_for_day
+from adventofcode.util.input_helpers import get_input_for_day, get_input_file_path
 
 UNKNOWN_EXCEPTION = "unknown exception occurred in verify_input_exists"
 
@@ -18,7 +20,21 @@ def add_day():
     If the input for that day does not exist, it will be downloaded from
     the advent of code website
     """
-    year, day = _parse_args(sys.argv[1:])
+    year = random.randint(2014, datetime.datetime.now().year)
+    days_in_year = 12 if year >= 2025 else 25
+    day = random.randint(1, days_in_year)
+    if len(sys.argv) > 3:
+        console.print("Too many arguments provided")
+        sys.exit(1)
+    elif len(sys.argv) == 3:
+        year = int(sys.argv[1])
+        day = int(sys.argv[2])
+    elif len(sys.argv) == 2:
+        year = int(sys.argv[1])
+        console.print(f"Picking random day for year {year}: {day}")
+    else:
+        console.print(f"Picking random year: {year} and day: {day}")
+
     console.print(f"Creating solution day file for year {year} day {day}")
 
     # Solution file
@@ -36,6 +52,17 @@ def add_day():
     open(test_input_file, "a").close()
 
     verify_input_exists(year, day)
+
+def missing_puzzles():
+    missing = {} # year: [day,...]
+    days_in_year = 25
+    for year in range(2014, datetime.datetime.now().year + 1):
+        if year >= 2025:
+            days_in_year = 12
+        for day in range(1, days_in_year+1):
+            if not os.path.exists(get_input_file_path(year, day)):
+                missing[year] = day
+    return missing
 
 
 def write_solution_template(path: str, year: int, day: int) -> None:
