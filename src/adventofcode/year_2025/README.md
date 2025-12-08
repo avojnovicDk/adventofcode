@@ -1,5 +1,5 @@
 # 2025
-Solutions for 6 days in 2025 with a total of 12 stars collected
+Solutions for 7 days in 2025 with a total of 14 stars collected
 
 | day   | part one | part two |
 | :---: | :------: | :------: |
@@ -9,3 +9,4 @@ Solutions for 6 days in 2025 with a total of 12 stars collected
 | 04 | ⭐️ | ⭐️ |
 | 05 | ⭐️ | ⭐️ |
 | 06 | ⭐️ | ⭐️ |
+| 07 | ⭐️ | ⭐️ |
