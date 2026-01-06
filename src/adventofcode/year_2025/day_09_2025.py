@@ -12,27 +12,27 @@ def part_one(input_file_path: str):
 
 
 def _check_is_inside(point, allowed_per_row):
-    x, row = point
-    allowed = sorted(allowed_per_row[row], key=lambda p: p[0] if isinstance(p, tuple) else p)
+    col, row = point
+    allowed = list(allowed_per_row[row])
     while allowed:
         nxt = allowed.pop(0)
-        if (nxt[1] if isinstance(nxt, tuple) else nxt) >= x:
+        if (nxt[1] if isinstance(nxt, tuple) else nxt) >= col:
             break
 
-    if (nxt[1] if isinstance(nxt, tuple) else nxt) < x:
+    if (nxt[1] if isinstance(nxt, tuple) else nxt) < col:
         return False
 
     if isinstance(nxt, tuple):
-        if nxt[0] <= x <= nxt[1]:
+        if nxt[0] <= col <= nxt[1]:
             return True
-    elif nxt == x:
+    elif nxt == col:
         return True
     
     allowed.append(nxt)
     counter = 0
     for a in allowed:
         if isinstance(a, tuple):
-            counter += len(set(a) - allowed_per_row[row + 1])
+            counter += len(set(a) - set(allowed_per_row.get(row + 1, [])))
         else:
             counter += 1
 
@@ -72,6 +72,11 @@ def part_two(input_file_path: str):
             allowed_per_row[a[1]].add((min(a[0], b[0]), max(a[0], b[0])))
             row_sides[a[1]].add((min(a[0], b[0]), max(a[0], b[0])))
 
+    allowed_per_row = {
+        k: sorted(v, key=lambda p: p[0] if isinstance(p, tuple) else p)
+        for k, v in allowed_per_row.items()
+    }
+
     max_area = 0
     for a, b in combinations(rectangles, 2):
         if (
@@ -83,10 +88,6 @@ def part_two(input_file_path: str):
             area = (abs(a[0] - b[0]) + 1) * (abs(a[1] - b[1]) + 1)
             if area > max_area:
                 max_area = area
-
-    segments = []
-    for a, b in zip(rectangles, rectangles[1:] + [rectangles[0]]):
-        segments.append((a[0] // 100, a[1] // 100, b[0] // 100, b[1] // 100))
     
     return max_area
 
